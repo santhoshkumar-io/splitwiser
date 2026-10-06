@@ -42,5 +42,17 @@ app/
   main.py          # creates the FastAPI app, includes routers
   routers/         # one module per resource
     health.py
+    users.py
 tests/
+docs/              # phase-by-phase learning notes
 ```
+
+## Endpoints
+
+| Method | Path              | Notes                                  |
+| ------ | ----------------- | -------------------------------------- |
+| GET    | `/health`         | Liveness probe                         |
+| POST   | `/users`          | Create a user; returns `201`           |
+| GET    | `/users/{id}`     | Fetch a user; `404` if absent          |
+
+Users are held in memory and are lost on restart — PostgreSQL lands in Phase 3.

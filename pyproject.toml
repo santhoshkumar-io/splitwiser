@@ -1,0 +1,24 @@
+[project]
+name = "splitwiser"
+version = "0.1.0"
+description = "A Splitwise-style expense sharing backend, built with FastAPI"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "pydantic[email]>=2.13.5",
+    "uvicorn[standard]>=0.34",
+]
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.13.1",
+    "pytest>=8.3",
+]
+
+# This project is an application, not a library we publish to PyPI,
+# so there is no [build-system] / no package to build.
+[tool.uv]
+package = false
+# This machine sits behind a TLS-intercepting proxy; use the macOS keychain
+# trust store instead of uv's bundled one.
+system-certs = true
